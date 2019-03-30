@@ -1,6 +1,3 @@
-//////////////ATTENTION//////////////
-PROGRAMME NON-TESTE
-/////////////////////////////////////
 
 1 - copier/coller les dossiers "Plante", "SEN-13322" et "WaterPump" dans le dossier "librairies" du dossier Arduino. 
 (Généralement sous C:\Users\XXX\Documents\Arduino\libraries)
