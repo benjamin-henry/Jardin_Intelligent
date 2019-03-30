@@ -3,7 +3,7 @@
 SEN_13322::SEN_13322()
 {}
 
-SEN_13322::SEN_13322(int pin)
+SEN_13322::SEN_13322(int pin, int type)
 {
 	pinMode(pin, INPUT);
 	_pin = pin;
@@ -11,6 +11,7 @@ SEN_13322::SEN_13322(int pin)
 	_threshold = 512;
 	_parametre_tempo = 300;
 	_tempo = 300;
+	_type = type;
 }
 
 SEN_13322::~SEN_13322(void)
@@ -18,6 +19,15 @@ SEN_13322::~SEN_13322(void)
 
 }
 
+void SEN_13322::set_type(int type)
+{
+	_type = type;
+}
+
+int SEN_13322::get_type(void)
+{
+	return _type;
+}
 
 int SEN_13322::get_data(void)
 {
