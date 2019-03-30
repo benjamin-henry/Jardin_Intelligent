@@ -58,7 +58,7 @@ int choux_pump_pin = 6; //PWM sur digital_Pins 6
 
 void setup()
 {
-  choux = PLANTE(choux_sensor_pin, choux_pump_pin);
+  choux = PLANTE(choux_sensor_pin, CAPACITIVE, choux_pump_pin);
   choux.set_sensor_threshold(512); // si valeur lue < threshold alors activer pompe
   choux.set_sensor_tempo(3); //déclenche une mesure toutes les 300 secondes (5 minutes)
   choux.set_pump_tempo(2); // la pompe restera active pendant 10 secondes si le capteur indique un manque d'humidité
@@ -67,7 +67,7 @@ void setup()
   Timer1.attachInterrupt(HardwareCallback); // à chaque milliseconde écoulée, on déclenche la routine "HardwareCallback" qui sert à cadencer de façon régulière le système, d'où l'utilisation d'un timer
 
   /*Serial.begin(115200);
-  Serial.setTimeout(5);*/
+    Serial.setTimeout(5);*/
 }
 
 void loop()
@@ -89,11 +89,11 @@ void loop()
 
   if (TMR0_flag10Hz) //tâche 10Hz
   {
+    TMR0_flag10Hz = 0;
     if (ledOn)
     {
       Toggle(led, &ledOn);
-    }
-    TMR0_flag10Hz = 0;
+    }    
   }
 
   if (TMR0_flag2Hz) //tâche 2Hz
@@ -103,8 +103,8 @@ void loop()
 
   if (TMR0_flag1Hz) //tâche 1Hz
   {
+    TMR0_flag1Hz = 0;
     Toggle(led, &ledOn); // faire pulser la led chaque seconde pour être sûr qu'on est pas bloqué dans le programme
     choux.tick(); //actualiser les valeurs à chaque seconde
-    TMR0_flag1Hz = 0;
   }
 }
