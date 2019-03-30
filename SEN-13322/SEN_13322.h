@@ -7,12 +7,17 @@
  #include "WProgram.h"
 #endif
 
+enum SENSOR_TYPE {RESISTIVE=0, CAPACITIVE};
+
 class SEN_13322
 {
 	public:
 		SEN_13322(void);
-		SEN_13322(int pin);
+		SEN_13322(int pin, int type);
 		~SEN_13322(void);
+
+		void set_type(int type);
+		int get_type(void);
 
 		void read_data(void);
 		int get_data(void);
@@ -35,6 +40,7 @@ class SEN_13322
 		int _threshold;
 		int _tempo;
 		int _parametre_tempo;
+		int _type;
 
 		bool _ready;
 		
