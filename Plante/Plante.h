@@ -14,7 +14,7 @@ class PLANTE
 {
 	public:
 		PLANTE(void);
-		PLANTE(int sensor_pin, int pump_pin);
+		PLANTE(int sensor_pin, int sensor_type, int pump_pin);
 		~PLANTE(void);
 
 		void set_sensor_threshold(int thresh);
