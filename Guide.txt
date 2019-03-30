@@ -1,0 +1,16 @@
+//////////////ATTENTION//////////////
+PROGRAMME NON-TESTE
+/////////////////////////////////////
+
+1 - copier/coller les dossiers "Plante", "SEN-13322" et "WaterPump" dans le dossier "librairies" du dossier Arduino. 
+(Généralement sous C:\Users\XXX\Documents\Arduino\libraries)
+
+2 - télécharger la librairie "TimerOne" dans le gestionnaire de librairies Arduino
+
+3 - ouvrir Jardin_Intelligent.ino et uploader le sketch
+
+4 - attendre quelques semaines
+
+5 - déguster de bons fruits et légumes intelligents ^^
+
+
