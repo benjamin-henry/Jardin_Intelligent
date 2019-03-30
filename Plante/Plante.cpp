@@ -2,9 +2,9 @@
 
 PLANTE::PLANTE(void){}
 
-PLANTE::PLANTE(int sensor_pin, int pump_pin)
+PLANTE::PLANTE(int sensor_pin, int sensor_type, int pump_pin)
 {
-	_sensor = SEN_13322(sensor_pin);
+	_sensor = SEN_13322(sensor_pin, sensor_type);
 	_pump = WATERPUMP(pump_pin);
 }
 
@@ -48,9 +48,20 @@ void PLANTE::tick(void)
 	_sensor.tick();	
 	if(_sensor.is_ready())
 	{
-		if(_sensor.get_data() <= _sensor.get_threshold())
+		if(_sensor.get_type() == RESISTIVE)
 		{
-			_pump.PUMP_ON();
+			if(_sensor.get_data() <= _sensor.get_threshold())
+			{
+				_pump.PUMP_ON();
+			}
+		}
+
+		if(_sensor.get_type() == CAPACITIVE)
+		{
+			if(_sensor.get_data() >= _sensor.get_threshold())
+			{
+				_pump.PUMP_ON();
+			}
 		}
 		_sensor.set_ready_flag(0);
 	}
